@@ -1,5 +1,6 @@
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class App {
@@ -7,7 +8,7 @@ public class App {
 
         String filePath = "C:\\Users\\Enrique\\Desktop\\Proyectos\\just-coding\\simple-java-processes\\src\\files\\out.txt";
 
-        String contentToWrite = "to the out.txt file";
+        String contentToWrite = "Hello World!";
 
         try {
             File file = new File(filePath);
@@ -15,13 +16,12 @@ public class App {
             if (!file.exists())
                 file.createNewFile();
 
-            FileOutputStream fos = new FileOutputStream(file);
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            byte[] contentInBytes = contentToWrite.getBytes();
-
-            fos.write(contentInBytes);
-            fos.flush();
-            fos.close();
+            bufferedWriter.write(contentToWrite);
+            bufferedWriter.newLine();
+            bufferedWriter.close();
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
