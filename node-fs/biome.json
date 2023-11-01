@@ -43,7 +43,7 @@
 	},
 	"formatter": {
 		"enabled": true,
-		"indentWidth": 1,
+		"indentWidth": 4,
 		"indentStyle": "tab",
 		"lineWidth": 80
 	}
