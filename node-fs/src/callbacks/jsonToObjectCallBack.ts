@@ -1,11 +1,11 @@
 import fs from "node:fs";
 
 export const jsonToObjectCallback = (
-    jsonPath: string,
+    jsonFilePath: string,
     callback: (error: Error | null, data: JSON | null) => void,
-) => {
+): void => {
     fs.readFile(
-        jsonPath,
+        jsonFilePath,
         { encoding: "utf-8" },
         (error: NodeJS.ErrnoException | null, data: string) => {
             if (error) {
