@@ -2,23 +2,27 @@ function miniCompiler(program: string): string {
   let numericValue: number = 0;
   let result: string = "";
 
-  for (let i = 0; i < program.length; i++) {
-    const operation = program[i];
-    if (operation === "#") {
-      numericValue += 1;
-    } else if (operation === "@") {
-      numericValue -= 1;
-    } else if (operation === "*") {
-      numericValue *= numericValue;
-    } else if (operation === "&") {
-      result += numericValue.toString();
+  for (let operation of program) {
+    switch (operation) {
+      case "#":
+        numericValue += 1;
+        break;
+      case "@":
+        numericValue -= 1;
+        break;
+      case "*":
+        numericValue *= numericValue;
+        break;
+      case "&":
+        result += numericValue.toString();
+        break;
     }
   }
 
   return result;
 }
 
-const input1: string =
-  "&###@&*&###@@##@##&######@@#####@#@#@#@##@@@@@@@@@@@@@@@*&&@@@@@@@@@####@@@@@@@@@#########&#&##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@&";
-const output1: string = miniCompiler(input1);
-console.log(`Input: ${input1}\nExpected Output: ${output1}`);
+const input: string =
+  "&###@&*&###@@##@##&######@@#####@#@#@#@##@@@@@@@@@@@@@@@*&&@@@@@@@@@####@@@@@@@@@#########&#&##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@##@@&";
+
+console.log(miniCompiler(input));
